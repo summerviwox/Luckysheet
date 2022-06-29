@@ -6657,7 +6657,6 @@ export function toJson(){
     toJsonOptions.title = $("#luckysheet_info_detail_input").val();
 
     toJsonOptions.data = getAllSheets();
-
     // row and column
     getluckysheetfile().forEach((file,index)=>{
 
@@ -6666,7 +6665,6 @@ export function toJson(){
         }
         toJsonOptions.data[index].row = getObjType(file.data) === 'array' ? file.data.length : 0;
         toJsonOptions.data[index].column = getObjType(file.data[0]) === 'array' ? file.data[0].length : 0;
-
     })
 
     return toJsonOptions;

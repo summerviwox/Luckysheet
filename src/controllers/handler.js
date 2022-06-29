@@ -66,7 +66,7 @@ import { luckysheetDrawMain } from '../global/draw';
 import locale from '../locale/locale';
 import Store from '../store';
 import { createLuckyChart, hideAllNeedRangeShow } from '../expendPlugins/chart/plugin'
-
+import { toJson } from '../global/api';
 //, columeflowset, rowflowset
 export default function luckysheetHandler() {
 
@@ -5045,10 +5045,25 @@ export default function luckysheetHandler() {
         event.stopPropagation();
     });
 
-    $("#mysave").click(function (event) {
+    $("#mysave").click(e=> {
+        let json = toJson()
+        console.log(json,json.celldata)
+        let celldata = JSON.parse(JSON.stringify({celldata:json.celldata}))
+        console.log(celldata)
+        // delete json.data
+        // delete json.visibledatacolumn
+        // delete json.visibledatarow
+        // json.celldata = celldata.celldata
+
+        json.data.forEach(item=>{
+            delete item.data
+            delete item.visibledatacolumn
+            delete item.visibledatarow
+        })
+        console.log(json)
         window.parent.postMessage({
             type:'excel',
-            data:window.luckysheet.toJson(),
+            data:JSON.stringify(json),
         })
     })
 
