@@ -5047,20 +5047,11 @@ export default function luckysheetHandler() {
 
     $("#mysave").click(e=> {
         let json = toJson()
-        console.log(json,json.celldata)
-        let celldata = JSON.parse(JSON.stringify({celldata:json.celldata}))
-        console.log(celldata)
-        // delete json.data
-        // delete json.visibledatacolumn
-        // delete json.visibledatarow
-        // json.celldata = celldata.celldata
-
         json.data.forEach(item=>{
             delete item.data
             delete item.visibledatacolumn
             delete item.visibledatarow
         })
-        console.log(json)
         window.parent.postMessage({
             type:'excel',
             data:JSON.stringify(json),
