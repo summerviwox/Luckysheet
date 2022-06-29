@@ -17,7 +17,7 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
         $("#luckysheet_info_detail").hide();
     }
     else {
-        $("#luckysheet_info_detail").show();
+        $("#luckysheet_info_detail").hide();
         // Store.infobarHeight = 56;
         Store.infobarHeight = document.querySelector('#luckysheet_info_detail').offsetHeight;
     }
